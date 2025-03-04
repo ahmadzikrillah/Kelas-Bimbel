@@ -1,0 +1,44 @@
+{
+    "materi": [
+        {
+            "id": 1,
+            "judul": "Sistem Reproduksi pada Manusia",
+            "deskripsi": "Materi ini membahas organ reproduksi pada manusia, proses reproduksi, serta gangguan dan penyakit pada sistem reproduksi.",
+            "durasi": "2 jam",
+            "pengajar": "Budi Santoso",
+            "gambar": "https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 2,
+            "judul": "Pewarisan Sifat",
+            "deskripsi": "Materi ini menjelaskan tentang hukum Mendel, kromosom, gen, dan cara pewarisan sifat dari orang tua kepada keturunannya.",
+            "durasi": "1.5 jam",
+            "pengajar": "Ani Wijaya",
+            "gambar": "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 3,
+            "judul": "Listrik Statis dan Dinamis",
+            "deskripsi": "Materi ini membahas tentang listrik statis, listrik dinamis, hukum Ohm, serta rangkaian listrik seri dan paralel.",
+            "durasi": "2 jam",
+            "pengajar": "Cahyo Pratama",
+            "gambar": "https://images.unsplash.com/photo-1581093458797-1b7b5fd3a2e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 4,
+            "judul": "Tata Surya",
+            "deskripsi": "Materi ini membahas tentang anggota tata surya, gerakan planet, serta fenomena alam seperti gerhana dan pasang surut.",
+            "durasi": "1.5 jam",
+            "pengajar": "Dewi Lestari",
+            "gambar": "https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+            "id": 5,
+            "judul": "Energi dan Perubahannya",
+            "deskripsi": "Materi ini menjelaskan tentang bentuk-bentuk energi, hukum kekekalan energi, serta transformasi energi dalam kehidupan sehari-hari.",
+            "durasi": "2 jam",
+            "pengajar": "Eko Prasetyo",
+            "gambar": "https://images.unsplash.com/photo-1581093458797-1b7b5fd3a2e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+        }
+    ]
+}
