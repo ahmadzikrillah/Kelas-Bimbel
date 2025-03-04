@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimbingan Belajar IPA SMP/MTS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="media/image1.jfif" alt="Logo Bimbel">
+            <img src="media/image2.jfif" alt="Logo Pendidikan">
+        </div>
+        <h1>BIMBINGAN BELAJAR</h1>
+        <h2>IPA SMP / MTS</h2>
+        <h3>LULUS UJIAN AKHIR</h3>
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h2>SELAMAT DATANG DI</h2>
+            <h3>BIMBINGAN BELAJAR IPA TERPADU UNTUK JENJANG SMP DAN MTS</h3>
+            <p>
+                HALAMAN INI KHUSUS DIBUAT SEBAGAI MEDIA PEMBELAJARAN YANG MENARIK DAN MUDAH DIIKUTI DENGAN DUKUNGAN SUMBER BELAJAR RESMI DARI KEMDIKDASMEN RI, SUMBER SUMBER TERBUKA DARI MICROSOFT DAN GOOGLE EDUCATION SERTA KHAN ACADEMY.
+            </p>
+            <div class="cta-box">
+                <a href="#" class="cta-button" onclick="showAlert(); countClicks();">KLIK DISINI UNTUK MELANJUTKAN</a>
+                <p id="clickCount">Telah dikunjungi sebanyak 0 kali.</p>
+            </div>
+        </section>
+
+        <section id="materi-section">
+            <h2>Daftar Materi Pelajaran</h2>
+            <div id="materi-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; ahmadzikrillah_2025</p>
+    </footer>
+
+    <button id="scrollToTop" onclick="scrollToTop()" title="Go to top">↑</button>
+
+    <script>
+        // Fungsi untuk menampilkan alert
+        function showAlert() {
+            alert("Selamat! Anda akan melanjutkan ke halaman berikutnya.");
+        }
+
+        // Fungsi untuk mengambil dan menampilkan data materi
+        async function loadMateri() {
+            try {
+                const response = await fetch('data.json'); // Mengambil file JSON
+                if (!response.ok) {
+                    throw new Error('File JSON tidak ditemukan atau tidak dapat diakses.');
+                }
+                const data = await response.json(); // Mengubah respons ke format JSON
+
+                const materiContainer = document.getElementById('materi-container');
+
+                // Menampilkan setiap materi
+                data.materi.forEach(materi => {
+                    const materiDiv = document.createElement('div');
+                    materiDiv.innerHTML = `
+                        <h3>${materi.judul}</h3>
+                        <img src="${materi.gambar}" alt="${materi.judul}" class="materi-gambar">
+                        <p><strong>Deskripsi:</strong> ${materi.deskripsi}</p>
+                        <p><strong>Durasi:</strong> ${materi.durasi}</p>
+                        <p><strong>Pengajar:</strong> ${materi.pengajar}</p>
+                        <hr>
+                    `;
+                    materiContainer.appendChild(materiDiv);
+                });
+            } catch (error) {
+                console.error('Terjadi kesalahan:', error);
+                const materiContainer = document.getElementById('materi-container');
+                materiContainer.innerHTML = `<p style="color: red;">Gagal memuat data materi. Silakan coba lagi nanti.</p>`;
+            }
+        }
+
+        // Fungsi untuk tombol scroll to top
+        window.onscroll = function() {
+            const scrollButton = document.getElementById('scrollToTop');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollButton.style.display = 'block';
+            } else {
+                scrollButton.style.display = 'none';
+            }
+        };
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; // Untuk Safari
+            document.documentElement.scrollTop = 0; // Untuk Chrome, Firefox, IE, dan Opera
+        }
+
+        // Fungsi untuk menghitung klik
+        let clickCount = 0;
+        function countClicks() {
+            clickCount++;
+            document.getElementById('clickCount').innerText = `Telah dikunjungi sebanyak ${clickCount} kali.`;
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.onload = loadMateri;
+    </script>
+</body>
+</html>
