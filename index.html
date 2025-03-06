@@ -3,14 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bimbingan Belajar IPA Terpadu untuk siswa SMP/MTS, mendukung kelulusan ujian akhir dengan sumber pembelajaran dari Kemdikdasmen RI, Microsoft, Google Education, dan Khan Academy.">
     <title>Bimbingan Belajar IPA SMP/MTS</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #scrollToTop:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="media/image1.jfif" alt="Logo Bimbel">
-            <img src="media/image2.jfif" alt="Logo Pendidikan">
+            <img src="media/image1.jfif" alt="Logo Bimbingan Belajar IPA SMP">
+            <img src="media/image2.jfif" alt="Logo Pendidikan Indonesia">
         </div>
         <h1>BIMBINGAN BELAJAR</h1>
         <h2>IPA SMP / MTS</h2>
@@ -22,7 +46,7 @@
             <h2>SELAMAT DATANG DI</h2>
             <h3>BIMBINGAN BELAJAR IPA TERPADU UNTUK JENJANG SMP DAN MTS</h3>
             <p>
-                HALAMAN INI KHUSUS DIBUAT SEBAGAI MEDIA PEMBELAJARAN YANG MENARIK DAN MUDAH DIIKUTI DENGAN DUKUNGAN SUMBER BELAJAR RESMI DARI KEMDIKDASMEN RI, SUMBER SUMBER TERBUKA DARI MICROSOFT DAN GOOGLE EDUCATION SERTA KHAN ACADEMY.
+                Halaman ini khusus dibuat sebagai media pembelajaran yang menarik dan mudah diikuti dengan dukungan sumber belajar resmi dari Kemdikdasmen RI, sumber terbuka dari Microsoft dan Google Education, serta Khan Academy.
             </p>
             <div class="cta-box">
                 <a href="#" class="cta-button" onclick="showAlert(); countClicks();">KLIK DISINI UNTUK MELANJUTKAN</a>
@@ -58,24 +82,26 @@
                 const data = await response.json(); // Mengubah respons ke format JSON
 
                 const materiContainer = document.getElementById('materi-container');
-
-                // Menampilkan setiap materi
-                data.materi.forEach(materi => {
-                    const materiDiv = document.createElement('div');
-                    materiDiv.innerHTML = `
-                        <h3>${materi.judul}</h3>
-                        <img src="${materi.gambar}" alt="${materi.judul}" class="materi-gambar">
-                        <p><strong>Deskripsi:</strong> ${materi.deskripsi}</p>
-                        <p><strong>Durasi:</strong> ${materi.durasi}</p>
-                        <p><strong>Pengajar:</strong> ${materi.pengajar}</p>
-                        <hr>
-                    `;
-                    materiContainer.appendChild(materiDiv);
-                });
+                if (materiContainer) {
+                    data.materi.forEach(materi => {
+                        const materiDiv = document.createElement('div');
+                        materiDiv.innerHTML = `
+                            <h3>${materi.judul}</h3>
+                            <img src="${materi.gambar}" alt="${materi.judul}" class="materi-gambar">
+                            <p><strong>Deskripsi:</strong> ${materi.deskripsi}</p>
+                            <p><strong>Durasi:</strong> ${materi.durasi}</p>
+                            <p><strong>Pengajar:</strong> ${materi.pengajar}</p>
+                            <hr>
+                        `;
+                        materiContainer.appendChild(materiDiv);
+                    });
+                }
             } catch (error) {
                 console.error('Terjadi kesalahan:', error);
                 const materiContainer = document.getElementById('materi-container');
-                materiContainer.innerHTML = `<p style="color: red;">Gagal memuat data materi. Silakan coba lagi nanti.</p>`;
+                if (materiContainer) {
+                    materiContainer.innerHTML = `<p style="color: red;">Gagal memuat data materi. Silakan coba lagi nanti.</p>`;
+                }
             }
         }
 
